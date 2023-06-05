@@ -1,0 +1,7 @@
+1)SELECT c."login", COUNT(o."inDelivery") FROM "Couriers" AS c LEFT OUTER JOIN "Orders" AS o ON c."id"=o."courierId" WHERE o."inDelivery" = true GROUP BY c."login";
+(в приложении баг - создается второй аналогичный заказ с тем же треком при присваивании заказа курьеру через API)
+
+SELECT c."login", COUNT(DISTINCT o."track") FROM "Couriers" AS c LEFT OUTER JOIN "Orders" AS o ON c."id"=o."courierId" WHERE o."inDelivery" = true GROUP BY c."login"; 
+(запрос, когда нет учета повторяющегося заказа)
+
+2) SELECT DISTINCT track, CASE WHEN finished = true THEN 2 WHEN cancelled = true THEN -1 WHEN "inDelivery" = true THEN 1 ELSE 0 END FROM "Orders";
