@@ -16,12 +16,6 @@ order_body = {
     ]
 }
 
-courier_headers = {
-    "Content-Type": "application/json"
-}
-
-courier_body = {
-    "login": "ninja",
-    "password": "1234",
-    "firstName": "saske"
+track_number = {
+   "t": 1
 }
